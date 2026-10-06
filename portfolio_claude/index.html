@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Syed Yahya Hussaini — Senior Full Stack Developer</title>
+  <meta name="description" content="Senior Full Stack Developer & Team Lead with 9+ years building SaaS and cloud applications on ASP.NET Core, Angular and Azure.">
+  <meta property="og:title" content="Syed Yahya Hussaini — Senior Full Stack Developer">
+  <meta property="og:description" content="I build and lead the .NET + Angular SaaS platforms that connect businesses to the tools they already run on.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#0b1120">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Apply saved theme before paint to avoid a flash
+    document.documentElement.classList.add('js');
+    try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary">
+      <a class="logo" href="#top" aria-label="Syed Yahya Hussaini, home">Yahya Hussaini<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#case-study">Case study</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- 1. HERO -->
+    <section class="hero container" id="top">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Senior Full Stack Developer · Team Lead</p>
+      <h1>Syed Yahya Hussaini</h1>
+      <p class="hero-tagline">I build and lead the <span class="accent">.NET + Angular SaaS platforms</span> that connect businesses to the tools they already run on.</p>
+      <p class="hero-name">9+ years shipping SaaS, cloud and enterprise software for US-based clients and public institutions.</p>
+      <ul class="hero-meta" aria-label="Location and availability">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Karachi, Pakistan
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          PKT (UTC+5) · <span id="local-time">—</span> local
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/><circle cx="12" cy="12" r="9"/></svg>
+          Works with US teams
+        </li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#projects">View Projects</a>
+        <a class="btn btn-ghost" href="#contact">Contact</a>
+      </div>
+      <dl class="stats">
+        <div><dt>Years experience</dt><dd>9+</dd></div>
+        <div><dt>Platform integrations on one WMS</dt><dd>11</dd></div>
+        <div><dt>Products &amp; client systems delivered</dt><dd>20+</dd></div>
+        <div><dt>Role</dt><dd>Team Lead</dd></div>
+      </dl>
+    </section>
+
+    <!-- 2. FEATURED PROJECTS -->
+    <section class="section container" id="projects" aria-labelledby="projects-title">
+      <header class="section-head">
+        <p class="kicker">01 — Selected work</p>
+        <h2 id="projects-title">Featured projects</h2>
+      </header>
+
+      <div class="project-grid">
+        <!-- Replace each .thumb with <img src="assets/xyz.png" alt="..."> when screenshots are ready -->
+        <article class="card project project-featured reveal">
+          <img class="thumb-img" src="assets/stacket-dashboard.webp" alt="Stacket WMS dashboard showing orders due, inbound activity, pick plans and warehouse capacity" width="1000" height="500" loading="lazy">
+          <div class="card-body">
+            <h3>StacketPro 3PL — Warehouse Management SaaS</h3>
+            <p class="problem"><strong>Problem:</strong> 3PL warehouses juggle orders, inventory and billing across marketplaces, carts and accounting tools that don't talk to each other.</p>
+            <p class="impact"><span class="impact-num">11</span> platforms integrated — Amazon, Shopify, Walmart, NetSuite, QuickBooks, HubSpot and more</p>
+            <ul class="tags" aria-label="Tools used"><li>ASP.NET Core</li><li>Angular</li><li>SQL Server</li><li>Webhooks</li><li>Azure DevOps</li></ul>
+            <div class="card-links">
+              <a class="card-link" href="#case-study">Read the case study <span aria-hidden="true">→</span></a>
+              <a class="card-link" href="https://stacketwms.com/" target="_blank" rel="noopener">Live site <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project reveal">
+          <img class="thumb-img" src="assets/seranova-dashboard.webp" alt="Seranova AI dashboard showing average rating, reviews logged, link sent rate and Google review conversion" width="1000" height="500" loading="lazy">
+          <div class="card-body">
+            <h3>Seranova AI — Automated Reputation Management</h3>
+            <p class="problem"><strong>Problem:</strong> Home service businesses, salons, restaurants and clinics rarely get reviews from happy customers, and unhappy ones post publicly before the owner can respond.</p>
+            <p class="impact"><span class="impact-num">AI</span> sentiment routing — happy customers go to Google reviews, unhappy ones alert the owner privately first</p>
+            <ul class="tags" aria-label="Features and integrations"><li>AI sentiment</li><li>SMS outreach</li><li>Square POS</li><li>Jobber</li><li>Bulk upload</li></ul>
+            <div class="card-links">
+              <a class="card-link" href="https://seranova.ai/" target="_blank" rel="noopener">Live site <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project reveal">
+          <img class="thumb-img" src="assets/restro-catering.webp" alt="Restro Catering homepage with a live catering overview of orders today, kitchen-ready orders, invoices sent and weekly order volume" width="1000" height="500" loading="lazy">
+          <div class="card-body">
+            <h3>Restro Catering — The Catering OS</h3>
+            <p class="problem"><strong>Problem:</strong> Catering orders arrive from many places, so details get missed, kitchens lose track when events overlap, and invoicing lags behind.</p>
+            <p class="impact"><span class="impact-num">1</span> system for orders, proposals, kitchen prep, invoicing and customer follow-up</p>
+            <ul class="tags" aria-label="Features"><li>Order &amp; proposal management</li><li>Kitchen workflow</li><li>Invoicing</li><li>Payments</li></ul>
+            <div class="card-links">
+              <a class="card-link" href="https://restrocatering.com/" target="_blank" rel="noopener">Live site <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project reveal">
+          <div class="thumb thumb-b" role="img" aria-label="PricePro thumbnail placeholder"><span>PricePro</span></div>
+          <div class="card-body">
+            <h3>PricePro — SaaS Pricing Platform</h3>
+            <p class="problem"><strong>Problem:</strong> A US client needed a SaaS pricing product built and evolved continuously, without a dedicated in-house engineering team.</p>
+            <p class="impact"><span class="impact-num">E2E</span> ownership — architecture, build, deployment and ongoing feature planning</p>
+            <ul class="tags" aria-label="Tools used"><li>ASP.NET Core</li><li>Angular</li><li>GraphQL</li><li>Azure</li></ul>
+            <a class="card-link" href="#contact">Ask me about it <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="card project reveal">
+          <div class="thumb thumb-c" role="img" aria-label="GeoMark suite thumbnail placeholder"><span>GeoMark Suite</span></div>
+          <div class="card-body">
+            <h3>GeoMark — Long-term client engagement</h3>
+            <p class="problem"><strong>Problem:</strong> GeoMark's geochemical lab and reservoir-fluid data lived in disconnected tools, making loading, tracking and querying samples slow.</p>
+            <p class="impact"><span class="impact-num">Multi</span> project partnership — LIMS, RFDbase, Dataloader and more delivered and maintained</p>
+            <ul class="tags" aria-label="Tools used"><li>ASP.NET Core</li><li>WinForms</li><li>DevExpress</li><li>SQL Server</li></ul>
+            <a class="card-link" href="#contact">Ask me about it <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. CASE STUDY -->
+    <section class="section container" id="case-study" aria-labelledby="case-title">
+      <header class="section-head">
+        <p class="kicker">02 — Deep dive</p>
+        <h2 id="case-title">StacketPro 3PL: one WMS, eleven outside systems</h2>
+        <p class="lede">How we turned a standalone warehouse app into a hub that syncs orders, inventory, billing and CRM data with the platforms its customers already use. <a href="https://stacketwms.com/" target="_blank" rel="noopener">stacketwms.com ↗</a></p>
+      </header>
+
+      <figure class="case-figure reveal">
+        <img src="assets/stacket-quickbooks-sync.webp" alt="Stacket orders screen beside a QuickBooks invoice generated from warehouse activity" width="1200" height="675" loading="lazy">
+        <figcaption>Warehouse activity in Stacket flows straight into QuickBooks invoices. One of the integrations described below.</figcaption>
+      </figure>
+
+      <ol class="case-steps">
+        <li class="case-step reveal">
+          <span class="step-label">Problem</span>
+          <h3>Warehouse data was trapped in silos</h3>
+          <p>3PL operators received orders from Amazon, Shopify, Walmart and carts like Sellbrite and CartRover, then re-keyed them into billing and accounting tools. Every manual hop added delay and errors, and onboarding a new client meant another one-off workaround.</p>
+        </li>
+        <li class="case-step reveal">
+          <span class="step-label">Approach</span>
+          <h3>A connector layer, not point-to-point hacks</h3>
+          <ul>
+            <li>Designed APIs, connectors and webhooks in <strong>ASP.NET Core</strong> so each platform plugs into a common sync model.</li>
+            <li>Built synchronization jobs to keep orders, stock and payments consistent across systems.</li>
+            <li>Led the dev team through code reviews and priorities; set up <strong>Azure DevOps CI/CD</strong> for repeatable deployments.</li>
+            <li>Worked directly with US stakeholders to turn integration requests into scoped, shippable features.</li>
+          </ul>
+        </li>
+        <li class="case-step reveal">
+          <span class="step-label">Results</span>
+          <h3>A WMS that fits into the customer's stack</h3>
+          <ul class="results">
+            <li><span class="impact-num">11</span> live integrations across marketplaces, ERP, accounting, CRM and payments</li>
+            <li><span class="impact-num">1</span> shared sync model, so new connectors follow a known pattern</li>
+            <li><span class="impact-num">CI/CD</span> automated deployments via Azure DevOps</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 4. ABOUT -->
+    <section class="section container about" id="about" aria-labelledby="about-title">
+      <header class="section-head">
+        <p class="kicker">03 — About</p>
+        <h2 id="about-title">Hands-on engineer, team lead by trade</h2>
+      </header>
+      <div class="about-body reveal">
+        <p>I'm a full stack developer from Karachi with 9+ years in the Microsoft stack, from Web Forms and WinForms through ASP.NET Core, Angular and Azure. I started out building exam, payroll and member systems for a public finance institute, moved on to lead engineering work at the Pakistan Engineering Council, and now lead a team at Dream Beyond building SaaS products like StacketPro, Seranova AI and Restro Catering for the US market.</p>
+        <p>I'm known for the hard middle part of a project: <strong>integrations, data sync and turning vague requirements into working software</strong>, while keeping the team unblocked and delivery on track.</p>
+        <p class="edu">MS Computer Science &amp; IT, NED University · BE Computer Systems, Dawood University</p>
+      </div>
+    </section>
+
+    <!-- 5. SKILLS -->
+    <section class="section container" id="skills" aria-labelledby="skills-title">
+      <header class="section-head">
+        <p class="kicker">04 — Stack</p>
+        <h2 id="skills-title">Skills &amp; tools</h2>
+      </header>
+      <div class="skills-grid">
+        <div class="card skill-group reveal">
+          <h3>Backend</h3>
+          <ul class="tags"><li>C#</li><li>ASP.NET Core</li><li>ASP.NET MVC</li><li>Web Forms</li><li>ABP Framework</li><li>Entity Framework</li><li>LINQ</li><li>ASMX</li></ul>
+        </div>
+        <div class="card skill-group reveal">
+          <h3>APIs &amp; real-time</h3>
+          <ul class="tags"><li>REST / Web API</li><li>GraphQL</li><li>SignalR</li><li>Webhooks</li><li>Third-party integrations</li></ul>
+        </div>
+        <div class="card skill-group reveal">
+          <h3>Frontend</h3>
+          <ul class="tags"><li>Angular</li><li>TypeScript</li><li>JavaScript</li><li>jQuery</li><li>HTML / CSS</li><li>DevExpress</li><li>Syncfusion</li></ul>
+        </div>
+        <div class="card skill-group reveal">
+          <h3>Cloud &amp; DevOps</h3>
+          <ul class="tags"><li>Azure</li><li>Azure WebJobs</li><li>Azure Data Factory</li><li>Azure DevOps</li><li>CI/CD</li></ul>
+        </div>
+        <div class="card skill-group reveal">
+          <h3>Data &amp; reporting</h3>
+          <ul class="tags"><li>SQL Server (T-SQL)</li><li>MySQL</li><li>Firestore</li><li>Crystal Reports</li><li>RDLC</li></ul>
+        </div>
+        <div class="card skill-group reveal">
+          <h3>Desktop &amp; leadership</h3>
+          <ul class="tags"><li>WinForms</li><li>Windows Services</li><li>Code reviews</li><li>Client communication</li><li>Delivery planning</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. PROOF / MILESTONES -->
+    <section class="section container" id="proof" aria-labelledby="proof-title">
+      <header class="section-head">
+        <p class="kicker">05 — Proof</p>
+        <h2 id="proof-title">Career milestones</h2>
+      </header>
+
+      <ol class="timeline">
+        <li class="reveal">
+          <span class="when">2022 – now</span>
+          <div>
+            <h3>Senior Full Stack Developer &amp; Team Lead · Dream Beyond</h3>
+            <p>Lead a team delivering SaaS products for US clients; drive our SaaS products (StacketPro 3PL, Seranova AI and Restro Catering) end to end, plus client work including PricePro, GeoMark, DM Clinical (Comtrak, ATOM) and others.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="when">2020 – 2022</span>
+          <div>
+            <h3>Assistant Director, Computer Programming · Pakistan Engineering Council</h3>
+            <p>Led the PEC Talent Hunt Portal and enhancements to the Engineers and Constructor/Operator portals; automated document archiving with Windows Services.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="when">2017 – 2020</span>
+          <div>
+            <h3>Software Engineer · Pakistan Institute of Public Finance Accountants</h3>
+            <p>Built the Exam Management and Computer-Based Exam systems, a remote examination platform, and a career &amp; news portal; improved payroll and member systems.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="when">2020</span>
+          <div>
+            <h3>MS in Computer Science &amp; IT · NED University</h3>
+            <p>Completed alongside full-time engineering work.</p>
+          </div>
+        </li>
+      </ol>
+
+      <!-- Testimonial template — duplicate inside .quotes once you have real quotes:
+      <div class="quotes">
+        <figure class="card quote">
+          <blockquote>"Quote from a manager or client."</blockquote>
+          <figcaption><strong>Name</strong> · Title, Company</figcaption>
+        </figure>
+      </div>
+      -->
+    </section>
+
+    <!-- 7. CONTACT -->
+    <section class="section container contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-card card">
+        <div class="contact-intro">
+          <p class="kicker">06 — Contact</p>
+          <h2 id="contact-title">Hiring for a senior or lead .NET role?</h2>
+          <p>The fastest way to reach me is email. I usually reply within a day (PKT, UTC+5).</p>
+          <div class="email-row">
+            <a class="email" href="mailto:syahyahussaini@hotmail.com">syahyahussaini@hotmail.com</a>
+            <button class="btn btn-small" type="button" id="copy-email" data-email="syahyahussaini@hotmail.com">Copy email</button>
+            <span class="copy-status" role="status" aria-live="polite"></span>
+          </div>
+          <ul class="socials" aria-label="Social profiles">
+            <li><a href="https://github.com/YahyaHussene" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
+            </a></li>
+            <li><a href="https://www.linkedin.com/in/syed-yahya-hussaini-6baba3b3/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg>
+            </a></li>
+            <li><a href="https://x.com/YahyaHusseini" target="_blank" rel="noopener" aria-label="X (Twitter)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M18.2 2.3h3.4l-7.4 8.4 8.7 11.5h-6.8l-5.3-7-6.1 7H1.3l7.9-9L.8 2.3h7l4.8 6.4 5.6-6.4zm-1.2 17.9h1.9L7 4.2H5l12 16z"/></svg>
+            </a></li>
+          </ul>
+        </div>
+
+        <!-- Static-site friendly: opens the visitor's mail client. Swap action for Formspree etc. if you want server-side delivery. -->
+        <form class="contact-form" id="contact-form" novalidate>
+          <label>Your name<input name="name" type="text" autocomplete="name" required></label>
+          <label>Company / role<input name="company" type="text" autocomplete="organization"></label>
+          <label>Message<textarea name="message" rows="4" required></textarea></label>
+          <button class="btn btn-primary" type="submit">Send message</button>
+          <p class="form-note">Opens your email app with the message filled in.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <p>© <span id="year">2026</span> Syed Yahya Hussaini · Built with plain HTML, CSS &amp; JS · Hosted on GitHub Pages</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
