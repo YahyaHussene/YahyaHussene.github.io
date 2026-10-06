@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syed Yahya Hussaini | Interactive Resume & Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0265d2',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s infinite ease-in-out',
+                        'float': 'float 6s infinite ease-in-out',
+                        'spin-slow': 'spin 20s linear infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
+                            '50%': { opacity: 0.8, transform: 'scale(1.05)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar and glassmorphism styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0284c7;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-sky-500 selection:text-white min-h-screen relative overflow-x-hidden transition-colors duration-300">
+
+    <!-- Background Canvas for Interactive Floating Particles -->
+    <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#hero" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center font-black text-white text-lg shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
+                    YH.
+                </div>
+                <div>
+                    <span class="font-bold text-slate-100 tracking-tight text-base block group-hover:text-sky-400 transition-colors">SYED YAHYA HUSSAINI</span>
+                    <span class="text-xs text-slate-400 block -mt-1">Sr. Full Stack Dev & Team Lead</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-sky-400 transition-colors">About</a>
+                <a href="#experience" class="hover:text-sky-400 transition-colors">Experience</a>
+                <a href="#skills" class="hover:text-sky-400 transition-colors">Skills Matrix</a>
+                <a href="#integrations" class="hover:text-sky-400 transition-colors">Integrations</a>
+                <a href="#products" class="hover:text-sky-400 transition-colors">Key Projects</a>
+                <a href="#education" class="hover:text-sky-400 transition-colors">Education</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <button id="qa-trigger-btn" onclick="toggleQAModal()" class="hidden sm:flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-sky-400 text-xs px-3 py-2 rounded-lg border border-slate-700 transition">
+                    <i data-lucide="bot" class="w-4 h-4"></i>
+                    <span>Ask AI Assistant</span>
+                </button>
+                <a href="mailto:SYAHYAHUSSAINI@HOTMAIL.COM" class="bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-lg shadow-md shadow-sky-500/20 transition hover:shadow-sky-500/30">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 pt-20">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[85vh] flex items-center justify-center relative py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+                
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-semibold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span>Available for Strategic Leadership & Full Stack Innovation</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Syed Yahya <span class="gradient-text">Hussaini</span>
+                    </h1>
+                    
+                    <p class="text-xl text-sky-200 font-medium">
+                        Senior Full Stack Developer | Team Lead | SaaS & Cloud Specialist
+                    </p>
+
+                    <div class="flex justify-center lg:justify-start">
+                        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
+                            <i data-lucide="badge-check" class="w-4 h-4"></i>
+                            Registered Engineer — Pakistan Engineering Council (PEC)
+                        </span>
+                    </div>
+
+                    <p class="text-slate-400 text-base leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Accomplished Sr. Full Stack Developer with <span class="text-white font-semibold">9+ years</span> of expertise in architecting high-scale SaaS applications, enterprise software, and cloud infrastructure. Proven team leader guiding cross-functional teams from conceptual architecture to high-throughput multi-platform integrations.
+                    </p>
+
+                    <!-- Quick Metrics Chips -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 max-w-lg mx-auto lg:mx-0">
+                        <div class="glass-card p-3 rounded-xl text-center border border-slate-800">
+                            <span class="text-2xl font-black text-sky-400 block">9+</span>
+                            <span class="text-xs text-slate-400 font-medium">Years Experience</span>
+                        </div>
+                         <div class="glass-card p-3 rounded-xl text-center border border-slate-800">
+                            <span class="text-2xl font-black text-indigo-400 block">20+</span>
+                            <span class="text-xs text-slate-400 font-medium">Products & client systems delivered</span>
+                        </div>
+                        <div class="glass-card p-3 rounded-xl text-center border border-slate-800">
+                            <span class="text-2xl font-black text-indigo-400 block">12+</span>
+                            <span class="text-xs text-slate-400 font-medium">Platforms Integrated</span>
+                        </div>
+                        <!-- <div class="glass-card p-3 rounded-xl text-center border border-slate-800">
+                            <span class="text-2xl font-black text-purple-400 block">4+</span>
+                            <span class="text-xs text-slate-400 font-medium">Flagship SaaS Apps</span>
+                        </div> -->
+                        <div class="glass-card p-3 rounded-xl text-center border border-slate-800">
+                            <span class="text-2xl font-black text-emerald-400 block">MS-CS</span>
+                            <span class="text-xs text-slate-400 font-medium">NED University</span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#experience" class="px-6 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-semibold shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 transition flex items-center space-x-2">
+                            <span>Explore Experience</span>
+                            <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+                        </a>
+                        <button onclick="toggleQAModal()" class="px-6 py-3 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold transition flex items-center space-x-2">
+                            <i data-lucide="sparkles" class="w-4 h-4 text-sky-400"></i>
+                            <span>Interactive CV Assistant</span>
+                        </button>
+                        <button onclick="window.print()" class="px-4 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800 transition flex items-center space-x-2" title="Print / Download PDF">
+                            <i data-lucide="printer" class="w-4 h-4"></i>
+                            <span class="text-xs font-semibold">Print PDF</span>
+                        </button>
+                    </div>
+
+                    <!-- Contact Bar -->
+                    <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400">
+                        <span class="flex items-center space-x-1.5"><i data-lucide="map-pin" class="w-4 h-4 text-sky-400"></i><span>Karachi, Pakistan</span></span>
+                        <a href="tel:+923453050710" class="flex items-center space-x-1.5 hover:text-sky-400 transition"><i data-lucide="phone" class="w-4 h-4 text-sky-400"></i><span>+92 345 3050710</span></a>
+                        <a href="mailto:SYAHYAHUSSAINI@HOTMAIL.COM" class="flex items-center space-x-1.5 hover:text-sky-400 transition"><i data-lucide="mail" class="w-4 h-4 text-sky-400"></i><span>syahyahussaini@hotmail.com</span></a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex justify-center relative">
+                    <!-- Tech Orbit Visualization -->
+                    <div class="relative w-80 h-80 sm:w-96 sm:h-96 flex items-center justify-center my-4">
+                        <!-- Orbit Ring 1 -->
+                        <div class="absolute inset-0 rounded-full border border-sky-500/20 animate-spin-slow"></div>
+                        <!-- Orbit Ring 2 -->
+                        <div class="absolute inset-6 rounded-full border border-indigo-500/20 animate-spin" style="animation-duration: 25s; animation-direction: reverse;"></div>
+
+                        <!-- Orbiting Badges -->
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 glass-card px-3 py-1 rounded-full text-xs font-bold text-sky-400 border border-sky-500/30 shadow-lg shadow-sky-500/20 z-20 whitespace-nowrap">
+                            ASP.NET Core
+                        </div>
+                        <div class="absolute top-1/2 -right-8 sm:-right-10 -translate-y-1/2 glass-card px-3 py-1 rounded-full text-xs font-bold text-indigo-400 border border-indigo-500/30 shadow-lg shadow-indigo-500/20 z-20 whitespace-nowrap">
+                            Angular
+                        </div>
+                        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 glass-card px-3 py-1 rounded-full text-xs font-bold text-purple-400 border border-purple-500/30 shadow-lg shadow-purple-500/20 z-20 whitespace-nowrap">
+                            Azure DevOps
+                        </div>
+                        <div class="absolute top-1/2 -left-8 sm:-left-10 -translate-y-1/2 glass-card px-3 py-1 rounded-full text-xs font-bold text-emerald-400 border border-emerald-500/30 shadow-lg shadow-emerald-500/20 z-20 whitespace-nowrap">
+                            SQL / NoSQL
+                        </div>
+
+                        <!-- Central Avatar Box -->
+                        <div class="w-40 h-40 sm:w-44 sm:h-44 rounded-3xl bg-slate-900 border-2 border-sky-500/40 p-3 shadow-2xl shadow-sky-500/20 flex flex-col items-center justify-center text-center space-y-1.5 relative overflow-hidden group z-10">
+                            <div class="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-indigo-500/10 opacity-50 group-hover:opacity-100 transition"></div>
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white text-xl font-black shadow-inner">
+                                YH
+                            </div>
+                            <div class="relative z-10">
+                                <h3 class="text-sm font-bold text-slate-100">Yahya Hussaini</h3>
+                                <p class="text-[10px] text-sky-400 font-semibold tracking-wider uppercase mt-0.5">Sr. Full Stack Lead</p>
+                            </div>
+                            <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 text-[10px] font-medium border border-emerald-500/20">
+                                9+ Yrs Dev Lead
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-sky-400 font-semibold text-xs tracking-widest uppercase">Career Journey</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Professional Experience</h2>
+                <p class="text-slate-400 text-sm mt-2">A timeline of high-impact software engineering, architecture, and team leadership.</p>
+            </div>
+
+            <!-- Experience Timeline Container -->
+            <div class="relative border-l-2 border-slate-800 ml-4 sm:ml-32 space-y-12">
+
+                <!-- Job 1: Dream Beyond -->
+                <div class="relative group">
+                    <!-- Date badge on desktop -->
+                    <div class="hidden sm:block absolute -left-36 top-1 text-right w-28">
+                        <span class="text-xs font-bold text-sky-400 block">Mar 2022 - Present</span>
+                        <span class="text-[11px] text-slate-500">Karachi, Pakistan</span>
+                    </div>
+
+                    <!-- Timeline Marker Node -->
+                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-sky-500 flex items-center justify-center text-sky-400 shadow-md group-hover:scale-110 transition-transform">
+                        <i data-lucide="briefcase" class="w-4 h-4"></i>
+                    </div>
+
+                    <!-- Experience Card -->
+                    <div class="ml-6 sm:ml-8 glass-card p-6 rounded-2xl hover:border-sky-500/40 transition">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                            <div>
+                                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                                    Senior Full Stack Developer & Team Lead
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-sky-500/20 text-sky-300 border border-sky-500/30">CURRENT ROLE</span>
+                                </h3>
+                                <p class="text-sky-400 text-sm font-semibold">Dream Beyond</p>
+                            </div>
+                            <div class="sm:hidden text-xs text-slate-400">
+                                <span>Mar 2022 - Present</span> | <span>Karachi, PK</span>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            Lead a high-performing engineering team building enterprise SaaS products and customized software solutions for US-based clients. Responsible for architecture, code reviews, multi-channel API integrations, continuous delivery, and product roadmaps.
+                        </p>
+
+                        <!-- Key Highlights / Achievements Grid -->
+                        <div class="space-y-2 text-xs text-slate-300 mb-5">
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                                <span><strong class="text-slate-100">Flagship SaaS Delivery:</strong> End-to-end development leadership for <strong>StacketPro 3PL WMS</strong>, <strong>PricePro</strong>, <strong>Restro Catering</strong>, and <strong>Seranova AI</strong>.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                                <span><strong class="text-slate-100">Enterprise Integrations:</strong> Engineered resilient, real-time connectors for Amazon, Shopify, Walmart, TikTok Shop, NetSuite, QuickBooks, PayPal, Monday.com, HubSpot, Sellbrite, and CartRover—covering orders, products, fulfillment, invoicing, and payments.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                                <span><strong class="text-slate-100">Client Solutions Portfolio:</strong> Spearheaded delivery for GeoMark RFDbase, GeoMark Dataloader, GeoMark LIMS, DM Clinical Comtrak, DM Clinical ATOM, Break Buddy, Peacock, and Agha Khan Store Management System.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                                <span><strong class="text-slate-100">DevOps & Quality:</strong> Architected Azure DevOps CI/CD pipelines, automated deployments, and established code review protocols.</span>
+                            </div>
+                        </div>
+
+                        <!-- Tech Stack Pills -->
+                        <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-800">
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">ASP.NET Core</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">Angular</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">Next.js</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">Supabase</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">SignalR</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">GraphQL</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">REST APIs</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">Azure SQL</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">Azure DevOps</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">Syncfusion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 2: Pakistan Engineering Council -->
+                <div class="relative group">
+                    <div class="hidden sm:block absolute -left-36 top-1 text-right w-28">
+                        <span class="text-xs font-bold text-sky-400 block">Nov 2020 - Mar 2022</span>
+                        <span class="text-[11px] text-slate-500">Islamabad, Pakistan</span>
+                    </div>
+
+                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-indigo-500 flex items-center justify-center text-indigo-400 shadow-md group-hover:scale-110 transition-transform">
+                        <i data-lucide="award" class="w-4 h-4"></i>
+                    </div>
+
+                    <div class="ml-6 sm:ml-8 glass-card p-6 rounded-2xl hover:border-indigo-500/40 transition">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Assistant Director - Computer Programming</h3>
+                                <p class="text-indigo-400 text-sm font-semibold">Pakistan Engineering Council (PEC)</p>
+                            </div>
+                            <div class="sm:hidden text-xs text-slate-400">
+                                <span>Nov 2020 - Mar 2022</span> | <span>Islamabad, PK</span>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            Led development initiatives and cross-departmental alignment for nationwide engineering portals. Managed key public-facing registration systems and automated operational backend processes.
+                        </p>
+
+                        <div class="space-y-2 text-xs text-slate-300 mb-5">
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400 shrink-0 mt-0.5"></i>
+                                <span><strong class="text-slate-100">PEC Talent Hunt Portal:</strong> Spearheaded design & web service integrations to connect nationwide engineers with high-impact job opportunities.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400 shrink-0 mt-0.5"></i>
+                                <span><strong class="text-slate-100">Engineer & Constructor Portals:</strong> Delivered core enhancements to the Engineer Registration Portal and Constructor/Operator Management platforms.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400 shrink-0 mt-0.5"></i>
+                                <span><strong class="text-slate-100">Workflow Automation:</strong> Built Windows Services for automated document archiving, dramatically eliminating manual data entry bottlenecks.</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-800">
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">ASP.NET MVC</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">ASMX Web Services</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">Razor</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">JavaScript & jQuery</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">SQL Server</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">WinForms</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 3: PIPFA -->
+                <div class="relative group">
+                    <div class="hidden sm:block absolute -left-36 top-1 text-right w-28">
+                        <span class="text-xs font-bold text-sky-400 block">Mar 2017 - Nov 2020</span>
+                        <span class="text-[11px] text-slate-500">Karachi, Pakistan</span>
+                    </div>
+
+                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-purple-500 flex items-center justify-center text-purple-400 shadow-md group-hover:scale-110 transition-transform">
+                        <i data-lucide="code" class="w-4 h-4"></i>
+                    </div>
+
+                    <div class="ml-6 sm:ml-8 glass-card p-6 rounded-2xl hover:border-purple-500/40 transition">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Software Engineer</h3>
+                                <p class="text-purple-400 text-sm font-semibold">Pakistan Institute of Public Finance Accountants (PIPFA)</p>
+                            </div>
+                            <div class="sm:hidden text-xs text-slate-400">
+                                <span>Mar 2017 - Nov 2020</span> | <span>Karachi, PK</span>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            Developed and maintained core financial, examination, student management, and payroll applications powering organizational operations.
+                        </p>
+
+                        <div class="space-y-2 text-xs text-slate-300 mb-5">
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0 mt-0.5"></i>
+                                <span><strong class="text-slate-100">Computer-Based Examination Systems:</strong> Architected on-site and Remote Access Computer-Based Exam systems featuring live proctoring, online exam engine, and automated real-time grading.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0 mt-0.5"></i>
+                                <span><strong class="text-slate-100">Enterprise Systems:</strong> Engineered Exam Management System, Payroll System, Members Affairs Portal, Student Records, and PIPFA official Web portal.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0 mt-0.5"></i>
+                                <span><strong class="text-slate-100">Reporting Solutions:</strong> Designed complex reporting workflows with Crystal Reports and RDLC for executive financial audits.</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-800">
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">ASP.NET Web Forms</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">C#</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">WinForms</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">SQL Server & MySQL</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[11px]">Crystal / RDLC Reports</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Technical Skills Matrix Section -->
+        <section id="skills" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-slate-900/40 rounded-3xl border border-slate-800/80 my-12">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-sky-400 font-semibold text-xs tracking-widest uppercase">Technical Expertise</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Skills & Competency Matrix</h2>
+                <p class="text-slate-400 text-sm mt-2">Filter Yahya's 9+ years skill set across backend, frontend, database, cloud, and enterprise tooling.</p>
+            </div>
+
+            <!-- Skill Filter Category Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8" id="skill-filter-tabs">
+                <button onclick="filterSkills('all')" class="skill-tab active px-4 py-2 rounded-xl text-xs font-semibold bg-sky-500 text-white transition shadow-md shadow-sky-500/20">All Technologies</button>
+                <button onclick="filterSkills('backend')" class="skill-tab px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Backend & Services</button>
+                <button onclick="filterSkills('frontend')" class="skill-tab px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Frontend & UI</button>
+                <button onclick="filterSkills('cloud')" class="skill-tab px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Cloud & DevOps</button>
+                <button onclick="filterSkills('database')" class="skill-tab px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Database & Reporting</button>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="skills-grid">
+                
+                <!-- ASP.NET Core -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="backend">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-sky-500/10 text-sky-400"><i data-lucide="server" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">ASP.NET Core</h4>
+                                <span class="text-[11px] text-slate-400">Backend Framework & Web APIs</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-sky-400">6+ Yrs</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-sky-500 to-indigo-500 h-2 rounded-full w-[95%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>ABP Framework, SignalR, REST APIs</span>
+                        <span>Expert</span>
+                    </div>
+                </div>
+
+                <!-- Razor Pages -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="backend">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-violet-500/10 text-violet-400"><i data-lucide="file-code-2" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Razor Pages</h4>
+                                <span class="text-[11px] text-slate-400">Server-rendered Web Applications</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-violet-400">5+ Yrs</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-violet-500 to-purple-500 h-2 rounded-full w-[85%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>Page Models, Tag Helpers, EF Core</span>
+                        <span>Advanced</span>
+                    </div>
+                </div>
+
+                <!-- Angular -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="frontend">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-red-500/10 text-red-400"><i data-lucide="layout" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Angular</h4>
+                                <span class="text-[11px] text-slate-400">Single-page Applications</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-red-400">3+ Yrs</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-red-500 to-orange-500 h-2 rounded-full w-[90%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>Syncfusion, DevExpress, TypeScript</span>
+                        <span>Advanced</span>
+                    </div>
+                </div>
+
+                <!-- Next.js -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="frontend">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-slate-500/10 text-slate-300"><i data-lucide="panels-top-left" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Next.js</h4>
+                                <span class="text-[11px] text-slate-400">React Full-stack Framework</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-slate-300">6+ Months</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-slate-500 to-slate-300 h-2 rounded-full w-[60%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>React, TypeScript, App Router</span>
+                        <span>Intermediate</span>
+                    </div>
+                </div>
+
+                <!-- SQL Server & Azure SQL -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="database">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400"><i data-lucide="database" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">SQL Server & Azure SQL</h4>
+                                <span class="text-[11px] text-slate-400">Relational Databases</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-emerald-400">9+ Yrs</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-emerald-500 to-teal-500 h-2 rounded-full w-[92%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>T-SQL, EF Core, Query Optimization</span>
+                        <span>Expert</span>
+                    </div>
+                </div>
+
+                <!-- MySQL -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="database">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-orange-500/10 text-orange-400"><i data-lucide="database" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">MySQL</h4>
+                                <span class="text-[11px] text-slate-400">Relational Database</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-orange-400">3+ Yrs</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-orange-500 to-amber-400 h-2 rounded-full w-[75%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>SQL, Schema Design, Query Optimization</span>
+                        <span>Proficient</span>
+                    </div>
+                </div>
+
+                <!-- Firestore -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="database">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-amber-500/10 text-amber-400"><i data-lucide="flame" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Firestore</h4>
+                                <span class="text-[11px] text-slate-400">Cloud NoSQL Database</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-amber-400">6+ Months</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-amber-500 to-yellow-400 h-2 rounded-full w-[60%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>NoSQL, Realtime Sync, Firebase</span>
+                        <span>Intermediate</span>
+                    </div>
+                </div>
+
+                <!-- Supabase -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="database">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-teal-500/10 text-teal-400"><i data-lucide="box" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Supabase</h4>
+                                <span class="text-[11px] text-slate-400">Backend-as-a-Service</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-teal-400">6+ Months</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-teal-500 to-emerald-400 h-2 rounded-full w-[60%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>PostgreSQL, Auth, Realtime APIs</span>
+                        <span>Intermediate</span>
+                    </div>
+                </div>
+
+                <!-- Crystal Reports -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="database">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400"><i data-lucide="file-chart-column" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Crystal Reports</h4>
+                                <span class="text-[11px] text-slate-400">Enterprise Reporting</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-cyan-400">5+ Yrs</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-cyan-500 to-sky-400 h-2 rounded-full w-[85%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>Report Design, Parameters, SQL Data</span>
+                        <span>Advanced</span>
+                    </div>
+                </div>
+
+                <!-- Azure Data Factory -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="cloud">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-blue-500/10 text-blue-400"><i data-lucide="workflow" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Azure Data Factory</h4>
+                                <span class="text-[11px] text-slate-400">Data Integration & ETL</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-blue-400">1+ Yr</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-blue-500 to-sky-400 h-2 rounded-full w-[70%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>ETL, Data Pipelines, Integrations</span>
+                        <span>Proficient</span>
+                    </div>
+                </div>
+
+                <!-- Azure Document Analyzer -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="cloud">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400"><i data-lucide="scan-text" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Azure Document Analyzer</h4>
+                                <span class="text-[11px] text-slate-400">AI Document Processing</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-indigo-400">1+ Yr</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-indigo-500 to-violet-400 h-2 rounded-full w-[70%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>OCR, Data Extraction, Document Models</span>
+                        <span>Proficient</span>
+                    </div>
+                </div>
+
+                <!-- Azure App Service -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="cloud">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-sky-500/10 text-sky-400"><i data-lucide="app-window" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Azure App Service</h4>
+                                <span class="text-[11px] text-slate-400">Managed Web App Hosting</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-sky-400">5+ Yrs</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-sky-500 to-cyan-400 h-2 rounded-full w-[88%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>Deployment Slots, Scaling, Configuration</span>
+                        <span>Advanced</span>
+                    </div>
+                </div>
+
+                <!-- Azure Blob Storage -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="cloud">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400"><i data-lucide="hard-drive" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Azure Blob Storage</h4>
+                                <span class="text-[11px] text-slate-400">Cloud Object Storage</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-cyan-400">5+ Yrs</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-cyan-500 to-blue-400 h-2 rounded-full w-[85%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>Containers, Secure Access, File Workflows</span>
+                        <span>Advanced</span>
+                    </div>
+                </div>
+
+                <!-- Azure Virtual Machines -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="cloud">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-violet-500/10 text-violet-400"><i data-lucide="server" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Azure Virtual Machines</h4>
+                                <span class="text-[11px] text-slate-400">Cloud Infrastructure</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-violet-400">2+ Yrs</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-violet-500 to-purple-400 h-2 rounded-full w-[75%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>Provisioning, Networking, Administration</span>
+                        <span>Proficient</span>
+                    </div>
+                </div>
+
+                <!-- Azure Container Apps -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="cloud">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400"><i data-lucide="box" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Azure Container Apps</h4>
+                                <span class="text-[11px] text-slate-400">Serverless Containers</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-emerald-400">3+ Months</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-2 rounded-full w-[55%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>Containers, Revisions, Autoscaling</span>
+                        <span>Intermediate</span>
+                    </div>
+                </div>
+
+                <!-- Real-time APIs & GraphQL -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="backend">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-purple-500/10 text-purple-400"><i data-lucide="network" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">SignalR & GraphQL</h4>
+                                <span class="text-[11px] text-slate-400">Real-time Data Sockets</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-purple-400">5+ Yrs</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-purple-500 to-indigo-500 h-2 rounded-full w-[85%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>Webhooks, Live Sync, Microservices</span>
+                        <span>Advanced</span>
+                    </div>
+                </div>
+
+                <!-- Desktop & Services -->
+                <div class="skill-card glass-card p-5 rounded-2xl border border-slate-800" data-category="backend">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2.5 rounded-xl bg-yellow-500/10 text-yellow-400"><i data-lucide="monitor" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">WinForms & Desktop Systems</h4>
+                                <span class="text-[11px] text-slate-400">ArcGIS Integration & Windows Services</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-yellow-400">8+ Yrs</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 mb-2">
+                        <div class="bg-gradient-to-r from-yellow-500 to-amber-500 h-2 rounded-full w-[90%]"></div>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex justify-between">
+                        <span>ArcGIS, Automated Archiving, Desktop Apps</span>
+                        <span>Expert</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Enterprise Integration Ecosystem Section -->
+        <section id="integrations" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-sky-400 font-semibold text-xs tracking-widest uppercase">3PL WMS & SaaS Interoperability</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Multi-Channel API Integration Hub</h2>
+                <p class="text-slate-400 text-sm mt-2">Click any platform node below to inspect how Yahya integrated StacketPro 3PL with major global platforms.</p>
+            </div>
+
+            <!-- Integration Canvas Visual Hub -->
+            <div class="glass-card p-6 sm:p-10 rounded-3xl border border-slate-800 relative overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Nodes Grid (Interactive) -->
+                    <div class="lg:col-span-7 grid grid-cols-3 sm:grid-cols-4 gap-3" id="integration-nodes">
+                        <!-- Node 1: Amazon -->
+                        <button onclick="selectIntegrationNode('amazon')" class="integration-node-btn p-3 rounded-2xl bg-slate-900 border border-slate-800 hover:border-amber-500/60 hover:scale-105 transition flex flex-col items-center justify-center text-center group">
+                            <i data-lucide="shopping-bag" class="w-6 h-6 text-amber-400 mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-xs font-bold text-slate-200">Amazon API</span>
+                            <span class="text-[9px] text-slate-500">Orders & Products</span>
+                        </button>
+
+                        <!-- Node 2: Shopify -->
+                        <button onclick="selectIntegrationNode('shopify')" class="integration-node-btn p-3 rounded-2xl bg-slate-900 border border-slate-800 hover:border-emerald-500/60 hover:scale-105 transition flex flex-col items-center justify-center text-center group">
+                            <i data-lucide="shopping-cart" class="w-6 h-6 text-emerald-400 mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-xs font-bold text-slate-200">Shopify</span>
+                            <span class="text-[9px] text-slate-500">Fulfillment Sync</span>
+                        </button>
+
+                        <!-- Node 3: NetSuite -->
+                        <button onclick="selectIntegrationNode('netsuite')" class="integration-node-btn p-3 rounded-2xl bg-slate-900 border border-slate-800 hover:border-sky-500/60 hover:scale-105 transition flex flex-col items-center justify-center text-center group">
+                            <i data-lucide="layers" class="w-6 h-6 text-sky-400 mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-xs font-bold text-slate-200">NetSuite</span>
+                            <span class="text-[9px] text-slate-500">PO & SO Sync</span>
+                        </button>
+
+                        <!-- Node 4: QuickBooks -->
+                        <button onclick="selectIntegrationNode('quickbooks')" class="integration-node-btn p-3 rounded-2xl bg-slate-900 border border-slate-800 hover:border-green-500/60 hover:scale-105 transition flex flex-col items-center justify-center text-center group">
+                            <i data-lucide="calculator" class="w-6 h-6 text-green-400 mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-xs font-bold text-slate-200">QuickBooks</span>
+                            <span class="text-[9px] text-slate-500">Invoicing</span>
+                        </button>
+
+                        <!-- Node 5: Walmart -->
+                        <button onclick="selectIntegrationNode('walmart')" class="integration-node-btn p-3 rounded-2xl bg-slate-900 border border-slate-800 hover:border-blue-500/60 hover:scale-105 transition flex flex-col items-center justify-center text-center group">
+                            <i data-lucide="store" class="w-6 h-6 text-blue-400 mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-xs font-bold text-slate-200">Walmart</span>
+                            <span class="text-[9px] text-slate-500">Orders & Stock</span>
+                        </button>
+
+                        <!-- Node 6: HubSpot -->
+                        <button onclick="selectIntegrationNode('hubspot')" class="integration-node-btn p-3 rounded-2xl bg-slate-900 border border-slate-800 hover:border-orange-500/60 hover:scale-105 transition flex flex-col items-center justify-center text-center group">
+                            <i data-lucide="users" class="w-6 h-6 text-orange-400 mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-xs font-bold text-slate-200">HubSpot</span>
+                            <span class="text-[9px] text-slate-500">CRM Sync</span>
+                        </button>
+
+                        <!-- Node 7: Monday.com -->
+                        <button onclick="selectIntegrationNode('monday')" class="integration-node-btn p-3 rounded-2xl bg-slate-900 border border-slate-800 hover:border-red-500/60 hover:scale-105 transition flex flex-col items-center justify-center text-center group">
+                            <i data-lucide="kanban" class="w-6 h-6 text-red-400 mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-xs font-bold text-slate-200">Monday.com</span>
+                            <span class="text-[9px] text-slate-500">Workflow Hooks</span>
+                        </button>
+
+                        <!-- Node 8: CartRover & Sellbrite -->
+                        <button onclick="selectIntegrationNode('cartrover')" class="integration-node-btn p-3 rounded-2xl bg-slate-900 border border-slate-800 hover:border-purple-500/60 hover:scale-105 transition flex flex-col items-center justify-center text-center group">
+                            <i data-lucide="truck" class="w-6 h-6 text-purple-400 mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-xs font-bold text-slate-200">CartRover</span>
+                            <span class="text-[9px] text-slate-500">3PL Routing</span>
+                        </button>
+
+                        <!-- Node 9: PayPal -->
+                        <button onclick="selectIntegrationNode('paypal')" class="integration-node-btn p-3 rounded-2xl bg-slate-900 border border-slate-800 hover:border-indigo-500/60 hover:scale-105 transition flex flex-col items-center justify-center text-center group">
+                            <i data-lucide="credit-card" class="w-6 h-6 text-indigo-400 mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-xs font-bold text-slate-200">PayPal API</span>
+                            <span class="text-[9px] text-slate-500">Billing & Payments</span>
+                        </button>
+
+                        <!-- Node 10: Twilio -->
+                        <button onclick="selectIntegrationNode('twilio')" class="integration-node-btn p-3 rounded-2xl bg-slate-900 border border-slate-800 hover:border-sky-500/60 hover:scale-105 transition flex flex-col items-center justify-center text-center group">
+                            <i data-lucide="message-square" class="w-6 h-6 text-sky-400 mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-xs font-bold text-slate-200">Twilio</span>
+                            <span class="text-[9px] text-slate-500">SMS & Dispatch</span>
+                        </button>
+
+                        <!-- Node 11: TikTok -->
+                        <button onclick="selectIntegrationNode('tiktok')" class="integration-node-btn p-3 rounded-2xl bg-slate-900 border border-slate-800 hover:border-pink-500/60 hover:scale-105 transition flex flex-col items-center justify-center text-center group">
+                            <i data-lucide="video" class="w-6 h-6 text-pink-400 mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-xs font-bold text-slate-200">TikTok Shop</span>
+                            <span class="text-[9px] text-slate-500">Order Fulfillment</span>
+                        </button>
+
+                        <!-- Node 12: Ecart APIs Aggregator -->
+                        <button onclick="selectIntegrationNode('ecart')" class="integration-node-btn p-3 rounded-2xl bg-slate-900 border border-slate-800 hover:border-cyan-500/60 hover:scale-105 transition flex flex-col items-center justify-center text-center group">
+                            <i data-lucide="cpu" class="w-6 h-6 text-cyan-400 mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-xs font-bold text-slate-200">Ecart APIs</span>
+                            <span class="text-[9px] text-slate-500">Store Aggregator</span>
+                        </button>
+                    </div>
+
+                    <!-- Selected Node Info Display -->
+                    <div class="lg:col-span-5 bg-slate-900/90 p-6 rounded-2xl border border-sky-500/30" id="integration-info-panel">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center" id="info-icon">
+                                <i data-lucide="zap" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white" id="info-title">StacketPro 3PL Central Hub</h3>
+                                <p class="text-xs text-sky-400" id="info-subtitle">Click any node on the left to inspect architectural details</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-4" id="info-description">
+                            Syed Yahya Hussaini architected resilient API connectors, webhooks, and background workflows that keep orders, products, inventory, fulfillment, invoices, and payments synchronized between StacketPro 3PL and leading commerce and enterprise platforms.
+                        </p>
+                        <div class="space-y-1.5 text-[11px] text-slate-400" id="info-bullets">
+                            <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i><span>Bi-directional order, inventory, and fulfillment updates</span></div>
+                            <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i><span>Centralized SKU mapping, validation, and reconciliation</span></div>
+                            <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i><span>Reliable webhook retries, rate-limit handling, and monitoring</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Products & Client Projects Portfolio -->
+        <section id="products" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-sky-400 font-semibold text-xs tracking-widest uppercase">Architectural Portfolio</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Featured SaaS & Enterprise Products</h2>
+                <p class="text-slate-400 text-sm mt-2">Key applications engineered, led, and deployed across Yahya's career.</p>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- StacketPro 3PL -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-sky-500/50 transition group flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded-full bg-sky-500/10 text-sky-400 text-[10px] font-bold tracking-wider uppercase border border-sky-500/20">Flagship SaaS WMS</span>
+                            <i data-lucide="box" class="w-5 h-5 text-sky-400 group-hover:rotate-12 transition-transform"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-sky-300 transition">StacketPro 3PL</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                            Enterprise 3PL warehouse management system with multi-warehouse inventory, real-time order routing, and automated fulfillment. Integrates Amazon, Shopify, Walmart, and TikTok Shop commerce channels with NetSuite order workflows, QuickBooks invoicing, and PayPal billing and payments.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">ASP.NET Core</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">Razor Pages</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">Syncfusion</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">SignalR</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">Azure SQL</span>
+                        </div>
+                        <span class="text-[11px] font-semibold text-sky-400 flex items-center gap-1">Role: Tech Lead & Architect <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></span>
+                    </div>
+                </div>
+
+                <!-- Seranova AI -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-purple-500/50 transition group flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-400 text-[10px] font-bold tracking-wider uppercase border border-purple-500/20">AI & SaaS</span>
+                            <i data-lucide="bot" class="w-5 h-5 text-purple-400 group-hover:rotate-12 transition-transform"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition">Seranova AI</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                            AI-driven business analytics and automated intelligent workflow SaaS application enabling US businesses to automate predictive insights and context processing.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">Next.js</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">Supabase</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">GraphQL</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">AI Workflows</span>
+                        </div>
+                        <span class="text-[11px] font-semibold text-purple-400 flex items-center gap-1">Role: Senior Full Stack Lead <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></span>
+                    </div>
+                </div>
+
+                <!-- PricePro -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition group flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-bold tracking-wider uppercase border border-emerald-500/20">Dynamic Pricing SaaS</span>
+                            <i data-lucide="trending-up" class="w-5 h-5 text-emerald-400 group-hover:rotate-12 transition-transform"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-300 transition">PricePro</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                            SaaS platform engineered for high-frequency pricing updates, competitor price tracking, dynamic margins, and automated marketplace push.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">ASP.NET Core</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">Angular</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">Syncfusion</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">Azure SQL</span>
+                        </div>
+                        <span class="text-[11px] font-semibold text-emerald-400 flex items-center gap-1">Role: Senior Full Stack Lead <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></span>
+                    </div>
+                </div>
+
+                <!-- GeoMark LIMS & Dataloader -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-indigo-500/50 transition group flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-bold tracking-wider uppercase border border-indigo-500/20">Geoscience & LIMS</span>
+                            <i data-lucide="database" class="w-5 h-5 text-indigo-400 group-hover:rotate-12 transition-transform"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-300 transition">GeoMark Suite</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                            Scientific enterprise suite including GeoMark RFDbase, Dataloader, and Laboratory Information Management System (LIMS) for high-precision geochemical dataset parsing.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">ASP.NET Core</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">Azure SQL</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">ArcGIS</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">Desktop</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">Web API</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">Azure Data Factory</span>
+                        </div>
+                        <span class="text-[11px] font-semibold text-indigo-400 flex items-center gap-1">Role: Senior Full Stack Lead <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></span>
+                    </div>
+                </div>
+
+                <!-- PEC Talent Hunt Portal -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-amber-500/50 transition group flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 text-[10px] font-bold tracking-wider uppercase border border-amber-500/20">Gov & Public Sector</span>
+                            <i data-lucide="award" class="w-5 h-5 text-amber-400 group-hover:rotate-12 transition-transform"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-300 transition">PEC Talent Hunt Portal</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                            Nationwide portal bridging Pakistani registered engineers with national and international recruitment opportunities with seamless web service verification.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">ASP.NET MVC</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">ASMX Web Services</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">SQL Server</span>
+                        </div>
+                        <span class="text-[11px] font-semibold text-amber-400 flex items-center gap-1">Role: Senior Full Stack Lead <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></span>
+                    </div>
+                </div>
+
+                <!-- PIPFA Remote Computer-Based Exam System -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-pink-500/50 transition group flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded-full bg-pink-500/10 text-pink-400 text-[10px] font-bold tracking-wider uppercase border border-pink-500/20">EdTech & Assessment</span>
+                            <i data-lucide="file-check" class="w-5 h-5 text-pink-400 group-hover:rotate-12 transition-transform"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-pink-300 transition">Remote Computer Exam Engine</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                            Remote access examination engine with automated timer scheduling, randomized question banks, live candidate monitoring, and real-time result processing.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">ASP.NET Web Forms</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">C#</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">Crystal Reports</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-300">SQL Server</span>
+                        </div>
+                        <span class="text-[11px] font-semibold text-pink-400 flex items-center gap-1">Role: Lead Software Engineer <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-sky-400 font-semibold text-xs tracking-widest uppercase">Academic Background</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Education & Qualifications</h2>
+                <p class="text-slate-400 text-sm mt-2">Postgraduate and undergraduate engineering degrees from leading institutions.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Degree 1: MS-CSIT -->
+                <div class="glass-card p-8 rounded-3xl border border-slate-800 hover:border-sky-500/40 transition flex items-start space-x-5">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center text-white shrink-0 shadow-lg shadow-sky-500/20">
+                        <i data-lucide="graduation-cap" class="w-7 h-7"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <span class="text-xs font-extrabold text-sky-400 uppercase tracking-wider">2018 - 2020</span>
+                        <h3 class="text-xl font-bold text-white">Master of Science - CS & IT (MS-CSIT)</h3>
+                        <p class="text-slate-300 text-sm font-semibold">NED University of Engineering & Technology, Karachi</p>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Specialized in Advanced Software Engineering, Cloud Architectures, Distributed Systems, and Data Science.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Degree 2: BE-CS -->
+                <div class="glass-card p-8 rounded-3xl border border-slate-800 hover:border-indigo-500/40 transition flex items-start space-x-5">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white shrink-0 shadow-lg shadow-indigo-500/20">
+                        <i data-lucide="book-open" class="w-7 h-7"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <span class="text-xs font-extrabold text-indigo-400 uppercase tracking-wider">2011 - 2015</span>
+                        <h3 class="text-xl font-bold text-white">Bachelor of Engineering - Computer Systems (BE-CS)</h3>
+                        <p class="text-slate-300 text-sm font-semibold">Dawood University of Engineering & Technology, Karachi</p>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Comprehensive grounding in Object Oriented Programming, Database Management Systems, Operating Systems, and Algorithms.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Professional Registration: PEC -->
+                <div class="glass-card p-8 rounded-3xl border border-slate-800 hover:border-emerald-500/40 transition flex items-start space-x-5">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white shrink-0 shadow-lg shadow-emerald-500/20">
+                        <i data-lucide="badge-check" class="w-7 h-7"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <span class="text-xs font-extrabold text-emerald-400 uppercase tracking-wider">Professional Registration</span>
+                        <h3 class="text-xl font-bold text-white">Registered Engineer</h3>
+                        <p class="text-slate-300 text-sm font-semibold">Pakistan Engineering Council (PEC)</p>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Professionally registered as an engineer with Pakistan's statutory engineering regulatory body.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer / Contact Banner -->
+        <footer class="py-12 border-t border-slate-800/80 bg-slate-950 mt-16 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+                <div class="inline-flex items-center space-x-2 text-2xl font-black text-white">
+                    <span class="w-8 h-8 rounded-lg bg-sky-500 flex items-center justify-center text-slate-950 text-sm">SY</span>
+                    <span>SYED YAHYA HUSSAINI</span>
+                </div>
+                <p class="text-slate-400 text-sm max-w-xl mx-auto">
+                    Senior Full Stack Developer & Team Lead specializing in ASP.NET Core, Angular, Next.js, Cloud Infrastructure, and Enterprise SaaS Integrations.
+                </p>
+                
+                <div class="flex flex-wrap justify-center gap-6 text-sm text-slate-300 font-medium">
+                    <a href="mailto:SYAHYAHUSSAINI@HOTMAIL.COM" class="hover:text-sky-400 transition flex items-center gap-1.5"><i data-lucide="mail" class="w-4 h-4 text-sky-400"></i> SYAHYAHUSSAINI@HOTMAIL.COM</a>
+                    <a href="tel:+923453050710" class="hover:text-sky-400 transition flex items-center gap-1.5"><i data-lucide="phone" class="w-4 h-4 text-sky-400"></i> +92 345 3050710</a>
+                    <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-4 h-4 text-sky-400"></i> Karachi, Pakistan</span>
+                </div>
+
+                <div class="pt-8 border-t border-slate-900 text-xs text-slate-500">
+                    &copy; 2026 Syed Yahya Hussaini. Interactive Portfolio & Digital CV.
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Interactive Q&A Modal ("Ask Yahya's Assistant") -->
+    <div id="qa-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-xl w-full rounded-3xl border border-sky-500/30 overflow-hidden shadow-2xl flex flex-col max-h-[85vh]">
+            <!-- Header -->
+            <div class="p-5 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center">
+                        <i data-lucide="bot" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-white">Ask Yahya's Interactive Resume AI</h3>
+                        <p class="text-[11px] text-slate-400">Instant answers regarding skills, leadership, & projects</p>
+                    </div>
+                </div>
+                <button onclick="toggleQAModal()" class="text-slate-400 hover:text-white transition">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Chat Output Container -->
+            <div id="chat-box" class="p-5 space-y-4 overflow-y-auto flex-1 text-xs">
+                <div class="flex items-start space-x-3">
+                    <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="bot" class="w-4 h-4"></i>
+                    </div>
+                    <div class="bg-slate-900 p-3.5 rounded-2xl border border-slate-800 text-slate-200 space-y-1">
+                        <p class="font-semibold text-sky-400">Hello! I am Yahya's Resume Assistant.</p>
+                        <p>Click any quick prompt below or type a query to ask about his technical stack, team leadership experience, SaaS products, or backend architecture!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Prompts Buttons -->
+            <div class="p-3 bg-slate-950 border-t border-slate-800/80 flex flex-wrap gap-2 text-[11px]">
+                <button onclick="sendQuickPrompt('leadership')" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 transition">Team Leadership Exp?</button>
+                <button onclick="sendQuickPrompt('stack')" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 transition">Core Tech Stack?</button>
+                <button onclick="sendQuickPrompt('stacket')" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 transition">StacketPro 3PL Details?</button>
+                <button onclick="sendQuickPrompt('education')" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 transition">Education Background?</button>
+            </div>
+
+            <!-- Input Bar -->
+            <div class="p-4 bg-slate-900 border-t border-slate-800 flex items-center space-x-2">
+                <input id="user-input" type="text" placeholder="Type a keyword (e.g., Azure, Angular, Dream Beyond)..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500" onkeydown="if(event.key==='Enter') handleUserSubmit()">
+                <button onclick="handleUserSubmit()" class="p-2 rounded-xl bg-sky-500 hover:bg-sky-600 text-white transition">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // -------------------------------------------------------------
+        // Particle Canvas Background Effect
+        // -------------------------------------------------------------
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.alpha = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(56, 189, 248, ${this.alpha})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(Math.floor(window.innerWidth / 15), 80);
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+        initParticles();
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // -------------------------------------------------------------
+        // Skills Matrix Filter Logic
+        // -------------------------------------------------------------
+        function filterSkills(category) {
+            const tabs = document.querySelectorAll('.skill-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-sky-500', 'text-white', 'shadow-md', 'shadow-sky-500/20');
+                tab.classList.add('bg-slate-800', 'text-slate-300');
+            });
+            event.currentTarget.classList.remove('bg-slate-800', 'text-slate-300');
+            event.currentTarget.classList.add('bg-sky-500', 'text-white', 'shadow-md', 'shadow-sky-500/20');
+
+            const cards = document.querySelectorAll('.skill-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // -------------------------------------------------------------
+        // Enterprise Integration Node Selection Hub
+        // -------------------------------------------------------------
+        const integrationData = {
+            amazon: {
+                title: "Amazon Marketplace SP-API Sync",
+                subtitle: "Real-Time Orders, Products & Fulfillment",
+                desc: "Integrated Amazon Selling Partner API (SP-API) with StacketPro 3PL to fetch orders and product data in real time, keep inventory aligned, and send fulfillment, shipment, and tracking updates back to Amazon.",
+                bullets: [
+                    "Automated order and product ingestion across seller accounts",
+                    "Multi-warehouse inventory reservation and stock synchronization",
+                    "Rate-limit handling, retry queues, and fulfillment-status updates"
+                ],
+                icon: "shopping-bag",
+                color: "amber"
+            },
+            shopify: {
+                title: "Shopify Store Webhook Engine",
+                subtitle: "Bi-Directional Commerce & Fulfillment Sync",
+                desc: "Connected Shopify stores with StacketPro 3PL through webhooks and APIs to import orders and products in real time, allocate inventory, and synchronize fulfillment, tracking, and order-status updates.",
+                bullets: [
+                    "Real-time order capture and product/SKU synchronization",
+                    "Automated fulfillment and tracking-number updates",
+                    "Multi-location inventory support with duplicate-event protection"
+                ],
+                icon: "shopping-cart",
+                color: "emerald"
+            },
+            netsuite: {
+                title: "Oracle NetSuite ERP Connector",
+                subtitle: "Real-Time Purchase & Sales Order Sync",
+                desc: "Integrated NetSuite with StacketPro to synchronize purchase orders and sales orders in real time, keeping ERP and warehouse workflows aligned from order creation through receiving and fulfillment.",
+                bullets: [
+                    "Bi-directional purchase order and sales order synchronization",
+                    "Automated receiving, fulfillment, and status updates",
+                    "Item mapping, reconciliation, error logging, and safe retries"
+                ],
+                icon: "layers",
+                color: "sky"
+            },
+            quickbooks: {
+                title: "QuickBooks Invoicing Integration",
+                subtitle: "Automated Customer Billing & Reconciliation",
+                desc: "Integrated QuickBooks with StacketPro to create and synchronize customer invoices, billing details, and transaction references, reducing manual entry and keeping financial records consistent.",
+                bullets: [
+                    "Automated invoice creation with mapped customers and line items",
+                    "Tax, fee, and billing-detail synchronization",
+                    "Invoice-status tracking, validation, and reconciliation"
+                ],
+                icon: "calculator",
+                color: "green"
+            },
+            walmart: {
+                title: "Walmart Marketplace API",
+                subtitle: "Real-Time Marketplace & Fulfillment Sync",
+                desc: "Integrated Walmart Marketplace APIs with StacketPro 3PL to fetch orders and products in real time, synchronize inventory, and return fulfillment, shipping, and tracking updates.",
+                bullets: [
+                    "Automated order acknowledgement and product/SKU mapping",
+                    "Real-time inventory availability across warehouse locations",
+                    "Shipping-service mapping and order-status synchronization"
+                ],
+                icon: "store",
+                color: "blue"
+            },
+            hubspot: {
+                title: "HubSpot CRM Synchronization",
+                subtitle: "Sales Lead & Client Account Sync",
+                desc: "Linked custom CRM functionality in PricePro and StacketPro with HubSpot, enabling real-time lead tracking, deal notifications, and client engagement history.",
+                bullets: [
+                    "Bi-directional deal stage mapping",
+                    "Automated contact creation on client sign-up",
+                    "Custom activity logging webhooks"
+                ],
+                icon: "users",
+                color: "orange"
+            },
+            monday: {
+                title: "Monday.com Workflow Integration",
+                subtitle: "Project & Task Management Webhooks",
+                desc: "Integrated Monday.com GraphQL & REST APIs to map client development tickets, sprint milestones, and automated alert notifications.",
+                bullets: [
+                    "GraphQL query optimizations for board status",
+                    "Automated ticket dispatch upon system alerts",
+                    "Custom status sync between dev boards"
+                ],
+                icon: "kanban",
+                color: "red"
+            },
+            cartrover: {
+                title: "CartRover & Sellbrite 3PL Routing",
+                subtitle: "Multi-Channel Order Aggregation Hub",
+                desc: "Architected integration mechanisms with CartRover and Sellbrite to streamline 3PL multi-channel order ingestion across dozens of regional e-commerce stores into a single WMS pipeline.",
+                bullets: [
+                    "Unified SKU normalization engine",
+                    "Automated batch order processing",
+                    "Resilient connector fallback queues"
+                ],
+                icon: "truck",
+                color: "purple"
+            },
+            paypal: {
+                title: "PayPal Billing & Payment Sync",
+                subtitle: "Subscriptions, Invoicing & Real-Time Payments",
+                desc: "Integrated PayPal with StacketPro for subscription billing and invoicing, using payment notifications and APIs to fetch transaction updates in real time and keep payment records synchronized.",
+                bullets: [
+                    "Automated recurring subscription and billing workflows",
+                    "Invoice generation and real-time payment-status updates",
+                    "Webhook-driven reconciliation, refunds, and failure handling"
+                ],
+                icon: "credit-card",
+                color: "indigo"
+            },
+            twilio: {
+                title: "Twilio Communications & SMS API",
+                subtitle: "Automated SMS, Dispatch & Verification",
+                desc: "Engineered Twilio API integrations to send instant SMS shipment notifications, real-time 3PL delivery updates, automated customer alert dispatches, and 2FA authentication.",
+                bullets: [
+                    "Automated order dispatch & transit SMS alerts",
+                    "2FA security verification workflow",
+                    "Real-time failure retry handling"
+                ],
+                icon: "message-square",
+                color: "sky"
+            },
+            tiktok: {
+                title: "TikTok Shop Commerce API",
+                subtitle: "Real-Time Social Commerce Fulfillment",
+                desc: "Connected TikTok Shop with StacketPro 3PL to fetch orders and products in real time, reserve inventory, and synchronize fulfillment, shipment status, and tracking information back to TikTok Shop.",
+                bullets: [
+                    "Automated order ingestion and catalog/SKU mapping",
+                    "Dynamic inventory reservation to reduce overselling",
+                    "Bi-directional fulfillment, order-status, and tracking updates"
+                ],
+                icon: "video",
+                color: "pink"
+            },
+            ecart: {
+                title: "Ecart APIs Middleware Aggregator",
+                subtitle: "Multi-Store Channel Integration Engine",
+                desc: "Integrated Ecart API middleware to connect StacketPro 3PL with hundreds of niche shopping engines, standardizing heterogeneous order payloads into a unified 3PL warehouse workflow.",
+                bullets: [
+                    "Unified payload translation across diverse shopping carts",
+                    "Centralized rate-limiting & retry queue middleware",
+                    "Seamless multi-channel catalog mapping"
+                ],
+                icon: "cpu",
+                color: "cyan"
+            }
+        };
+
+        function selectIntegrationNode(key) {
+            const data = integrationData[key];
+            if (!data) return;
+
+            document.getElementById('info-title').innerText = data.title;
+            document.getElementById('info-subtitle').innerText = data.subtitle;
+            document.getElementById('info-description').innerText = data.desc;
+
+            const bulletsContainer = document.getElementById('info-bullets');
+            bulletsContainer.innerHTML = data.bullets.map(b => `
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    <span>${b}</span>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        // -------------------------------------------------------------
+        // Interactive AI Q&A Assistant Simulation
+        // -------------------------------------------------------------
+        function toggleQAModal() {
+            const modal = document.getElementById('qa-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        const qaKnowledgeBase = {
+            leadership: "Syed Yahya Hussaini currently serves as Senior Full Stack Developer & Team Lead at Dream Beyond (Mar 2022 - Present) and previously served as Assistant Director - Computer Programming at Pakistan Engineering Council (2020 - 2022). He has led cross-functional engineering teams, conducted technical code reviews, architected multi-platform SaaS solutions, and managed stakeholder delivery for US and national clients.",
+            credentials: "Yahya is a Registered Engineer with the Pakistan Engineering Council (PEC). He also holds an MS in Computer Science & IT from NED University and a BE in Computer Systems from Dawood University of Engineering & Technology.",
+            stack: "Yahya's primary stack includes ASP.NET Core, Razor Pages, Angular, Next.js, SQL Server, Azure SQL, MySQL, Firestore, Supabase, C#, SignalR, GraphQL, Syncfusion, ArcGIS, Azure Data Factory, Azure Document Analyzer, Azure App Service, Azure Blob Storage, Azure Virtual Machines, Azure Container Apps, Azure DevOps, REST APIs, and Crystal Reports.",
+            stacket: "StacketPro 3PL is a flagship Third-Party Logistics Warehouse Management SaaS built at Dream Beyond using ASP.NET Core, Razor Pages, Syncfusion, SignalR, and Azure SQL. Yahya led its architecture and development, delivering real-time order, product, inventory, and fulfillment integrations for Amazon, Shopify, Walmart, and TikTok Shop; purchase and sales order synchronization with NetSuite; invoicing through QuickBooks; and subscription billing, invoicing, and payment synchronization through PayPal.",
+            education: "Yahya holds a Master of Science in Computer Science & IT (MS-CSIT) from NED University of Engineering & Technology (2018-2020) and a Bachelor of Engineering in Computer Systems (BE-CS) from Dawood University of Engineering & Technology (2011-2015).",
+            experience: "Yahya has over 9 years of professional software engineering experience spanning Senior Full Stack Developer & Team Lead at Dream Beyond (2022-Present), Assistant Director at Pakistan Engineering Council (2020-2022), and Software Engineer at PIPFA (2017-2020).",
+            contact: "You can reach Yahya via email at SYAHYAHUSSAINI@HOTMAIL.COM or phone at +92 345 3050710. He is based in Karachi, Pakistan."
+        };
+
+        function addChatMessage(sender, text) {
+            const chatBox = document.getElementById('chat-box');
+            const isUser = sender === 'user';
+
+            const msgHtml = `
+                <div class="flex items-start space-x-3 ${isUser ? 'flex-row-reverse space-x-reverse' : ''}">
+                    <div class="w-7 h-7 rounded-lg ${isUser ? 'bg-indigo-500/20 text-indigo-400' : 'bg-sky-500/20 text-sky-400'} flex items-center justify-center shrink-0">
+                        <i data-lucide="${isUser ? 'user' : 'bot'}" class="w-4 h-4"></i>
+                    </div>
+                    <div class="${isUser ? 'bg-indigo-950/80 border-indigo-800' : 'bg-slate-900 border-slate-800'} p-3.5 rounded-2xl border text-slate-200 max-w-[85%]">
+                        ${text}
+                    </div>
+                </div>
+            `;
+            chatBox.insertAdjacentHTML('beforeend', msgHtml);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            lucide.createIcons();
+        }
+
+        function sendQuickPrompt(key) {
+            const promptMap = {
+                leadership: "Tell me about Yahya's team leadership experience.",
+                stack: "What are his core technologies and frameworks?",
+                stacket: "What is StacketPro 3PL and Yahya's role in it?",
+                education: "What is Yahya's academic degree background?"
+            };
+            addChatMessage('user', promptMap[key]);
+            
+            setTimeout(() => {
+                addChatMessage('bot', qaKnowledgeBase[key]);
+            }, 300);
+        }
+
+        function handleUserSubmit() {
+            const input = document.getElementById('user-input');
+            const query = input.value.trim().toLowerCase();
+            if (!query) return;
+
+            addChatMessage('user', input.value);
+            input.value = '';
+
+            let matchedAnswer = "Yahya is a Senior Full Stack Developer & Team Lead with 9+ years of experience specializing in ASP.NET Core, Angular, Next.js, Supabase, Azure SQL, and SaaS integrations. Feel free to reach out to him directly at SYAHYAHUSSAINI@HOTMAIL.COM.";
+
+            if (query.includes('lead') || query.includes('management') || query.includes('team')) {
+                matchedAnswer = qaKnowledgeBase.leadership;
+            } else if (query.includes('registered engineer') || query.includes('pec') || query.includes('credential') || query.includes('qualification')) {
+                matchedAnswer = qaKnowledgeBase.credentials;
+            } else if (query.includes('stack') || query.includes('tech') || query.includes('angular') || query.includes('next') || query.includes('c#')) {
+                matchedAnswer = qaKnowledgeBase.stack;
+            } else if (query.includes('stacket') || query.includes('3pl') || query.includes('wms') || query.includes('saas') || query.includes('integration')) {
+                matchedAnswer = qaKnowledgeBase.stacket;
+            } else if (query.includes('education') || query.includes('degree') || query.includes('university') || query.includes('ned')) {
+                matchedAnswer = qaKnowledgeBase.education;
+            } else if (query.includes('experience') || query.includes('year') || query.includes('history')) {
+                matchedAnswer = qaKnowledgeBase.experience;
+            } else if (query.includes('contact') || query.includes('email') || query.includes('phone') || query.includes('location')) {
+                matchedAnswer = qaKnowledgeBase.contact;
+            }
+
+            setTimeout(() => {
+                addChatMessage('bot', matchedAnswer);
+            }, 350);
+        }
+    </script>
+</body>
+</html>
